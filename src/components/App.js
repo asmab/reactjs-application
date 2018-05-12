@@ -4,14 +4,12 @@ import PageNotFound from './common/PageNotFound';
 import Home from './landing/Home';
 import PatientListContainer from './patient/PatientListContainer'; // eslint-disable-line import/no-named-as-default
 import AddOrEditPatientContainer from './patient/AddOrEditPatientContainer'; // eslint-disable-line import/no-named-as-default
+import PrescriptionContainer from './patient/PrescriptionContainer';
 import About from './About';
 import createBrowserHistory from 'history/createBrowserHistory';
 import HeaderNavContainer from './landing/HeaderNavContainer'; // eslint-disable-line import/no-named-as-default
 
-
-
 const history = createBrowserHistory();
-
 
 const App = () => {
     return (
@@ -26,6 +24,7 @@ const App = () => {
                         <Route path="/patients" component={PatientListContainer} />
                         <Route exact path="/patient" component={AddOrEditPatientContainer} />
                         <Route path="/patient/:id" component={AddOrEditPatientContainer} />
+                        <Route path="/patient-prescription/:id" component={PrescriptionContainer} />
                         <Route path="/about" component={About} />
                         <Route component={PageNotFound} />
                     </Switch>

@@ -91,7 +91,6 @@ class PatientApi {
             setTimeout(() => {
                 const existingPatientIndex = patients.findIndex(patient => patient.id === patientId);
                 const patientFound = Object.assign({}, patients[existingPatientIndex]);
-                console.log('patientFound',patientFound)
                 resolve(patientFound);
 
             }, delay);

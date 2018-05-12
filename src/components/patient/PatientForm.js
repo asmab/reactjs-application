@@ -12,16 +12,8 @@ export const PatientForm = ({ handleSubmit, pristine, reset, submitting, heading
             <Field
                 type="text"
                 name="firstname"
-                label="First name"
-                placeholder="First name of the Patient"
-                component={FieldInput}
-            />
-
-            <Field
-                type="text"
-                name="lastname"
-                label="Last name"
-                placeholder="Last name of the Patient"
+                label="Name"
+                placeholder="Patient name"
                 component={FieldInput}
             />
 
@@ -29,14 +21,14 @@ export const PatientForm = ({ handleSubmit, pristine, reset, submitting, heading
                 type="email"
                 name="email"
                 label="Email address"
-                placeholder="Email of the patient"
+                placeholder="Email"
                 component={FieldInput}
             />
             <Field
                 type="date"
                 name="birthday"
-                label="Birthday"
-                placeholder="Birthdate of the patient"
+                label="Date of birth"
+                placeholder="Date of birth"
                 component={FieldInput}
             />
 
@@ -44,7 +36,7 @@ export const PatientForm = ({ handleSubmit, pristine, reset, submitting, heading
                 type="text"
                 name="phoneNumber"
                 label="Phone Number"
-                placeholder="Phone number of the patient"
+                placeholder="Phone number"
                 component={FieldInput}
             />
 

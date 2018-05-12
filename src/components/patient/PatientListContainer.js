@@ -18,6 +18,7 @@ export class PatientListContainer extends React.Component {
         this.handleEditPatient = this.handleEditPatient.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleRowSelect = this.handleRowSelect.bind(this);
+        this.handleAddPrescription = this.handleAddPrescription.bind(this);
     }
 
 
@@ -38,13 +39,11 @@ export class PatientListContainer extends React.Component {
 
     handleEditPatient() {
         const selectedPatientId = this.state.selectedPatientId;
-
         if (selectedPatientId) {
             this.setState({selectedPatientId: undefined});            
             this.props.history.push(`/patient/${selectedPatientId}`);
         }        
     }
-
 
 
     handleDelete() {
@@ -59,7 +58,13 @@ export class PatientListContainer extends React.Component {
         }
     }
 
-
+    handleAddPrescription() {
+        const selectedPatientId = this.state.selectedPatientId;
+        if (selectedPatientId) {
+            this.setState({selectedPatientId: undefined});           
+            this.props.history.push(`/patient-prescription/${selectedPatientId}`);
+        } 
+    }
 
     handleRowSelect(row, isSelected) {
         if (isSelected) {
@@ -112,13 +117,21 @@ export class PatientListContainer extends React.Component {
                             >
                                 <i className="fa fa-trash-o" aria-hidden="true" onClick={this.handleDelete}/> Delete
                             </button>
+
+                            <button
+                                type="button"
+                                className="btn btn-primary ml-2"
+                                onClick={this.handleAddPrescription}
+                            >
+                                <i className="fa fa-plus" aria-hidden="true" onClick={this.handleAddPrescription}/> Add prescription
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col">
-                        <PatientList patients={patients} handleRowSelect={this.handleRowSelect}/>
+                        <PatientList patients={patients} handleRowSelect={this.handleRowSelect} handleAddPatient={this.handleAddPatient}/>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 /*eslint-disable import/default */
 
 import React from 'react';
+import axios from 'axios';
 import {render} from 'react-dom';
 import configureStore from './configureStore';
 import {Provider} from 'react-redux';

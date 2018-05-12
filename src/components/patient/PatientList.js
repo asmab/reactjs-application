@@ -27,6 +27,12 @@ const titleFormatter = (cell, row) => {
   return `<a href=${row.watchHref} target="_blank">${cell}</a>`;
 };
 
+function something (cell, row) {
+    return (
+    <div>
+    </div>);
+}
+
 
 
 class PatientList extends React.Component {
@@ -46,6 +52,11 @@ class PatientList extends React.Component {
             clickToSelect: true, 
             hideSelectColumn: true            
         };
+
+
+        this.state = {selectedPatientId: undefined};
+
+        this.handleAddPatient = props.handleAddPatient.bind(this);
     }
 
 
@@ -65,16 +76,7 @@ class PatientList extends React.Component {
                     filter={{type: 'TextFilter', delay: 0 }}
                     columnTitle
                 >
-                    First name
-                </TableHeaderColumn>
-
-                <TableHeaderColumn 
-                    dataField="lastname"
-                    dataSort={true}
-                    caretRender={getCaret}
-                    columnTitle
-                >
-                    Last name
+                    Name
                 </TableHeaderColumn>
 
                 <TableHeaderColumn 
@@ -105,7 +107,7 @@ class PatientList extends React.Component {
                     columnTitle
                 >
                     Phone Number
-                </TableHeaderColumn>                    
+                </TableHeaderColumn>              
             </BootstrapTable>
         );
     }

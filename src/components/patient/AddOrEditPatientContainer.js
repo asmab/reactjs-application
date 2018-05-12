@@ -56,12 +56,8 @@ export class AddOrEditPatientContainer extends React.Component {
 
     render() {
         const { initialValues } = this.props;
-        console.log('this.props ', this.props)
-        console.log('initialValues', initialValues)
 
         const heading = initialValues && initialValues.id ? 'Edit' : 'Add';
-
-        console.log('heading ', heading)
         return (
             <div className="container">
                 <PatientForm
