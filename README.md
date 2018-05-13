@@ -2,7 +2,8 @@
 
 ReactJS application with WebPack, hot-reloading and LESS.
 
-Patient and Medicine management using patientSky API
+Patients management - CRUD
+Medicines search using patientSky API
 
 ## Getting Started
 ```sh
@@ -33,4 +34,4 @@ Open [http://localhost:3000](http://localhost:3000)<br>
 * toastr
 * jquery (needed by toastr and bootstrap 4)
 * lodash
-* Font Awesome: because Bootstrap 4 no longer suppies glyphicons
+* Font Awesome
