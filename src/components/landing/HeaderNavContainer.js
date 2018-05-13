@@ -1,7 +1,6 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import Spinner from '../common/Spinner';
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 
 export const HeaderNavContainer = ({apiCallsInProgress}) => {
@@ -17,32 +16,19 @@ export const HeaderNavContainer = ({apiCallsInProgress}) => {
                         <a className="header-logo" target="_blank" href="https://pasientsky.no/"></a>
                         <NavLink className="nav-item nav-link" exact activeClassName="active" to="/">Home</NavLink>
                         <NavLink className="nav-item nav-link" activeClassName="active" to="/patients" >Patients</NavLink>
-                        <NavLink className="nav-item nav-link" activeClassName="active" to="/about">About</NavLink>
-
-                        <span className="ml-5">
-                            {apiCallsInProgress > 0 && <Spinner className="nav-item nav-link" interval={100} dots={20} />}
-                        </span>
                     </div>
                 </div>
             </div>
         </nav>
-    );
-};
-
-
-
+    )
+}
 
 HeaderNavContainer.propTypes = {
     apiCallsInProgress: PropTypes.number.isRequired
-};
-
-
+}
 
 const mapStateToProps = state => ({
     apiCallsInProgress: state.apiReducer.apiCallsInProgress
-});
+})
 
-
-
-export default connect(mapStateToProps)(HeaderNavContainer);
-
+export default connect(mapStateToProps)(HeaderNavContainer)

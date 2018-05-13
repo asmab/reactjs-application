@@ -1,8 +1,6 @@
-import * as ActionType from '../action/ActionType';
-import initialState from './initialState';
-import _ from 'lodash';
-
-
+import * as ActionType from '../action/ActionType'
+import initialState from './initialState'
+import _ from 'lodash'
 
 const patientsReducer = (state = initialState.patientsReducer, action) => {
     switch(action.type) {
@@ -13,14 +11,11 @@ const patientsReducer = (state = initialState.patientsReducer, action) => {
             return {
                 ...state, 
                 patients: _.assign(action.patients)
-            };
+            }
         }
-
 
         default: { return state; }
     }
-};
+}
 
-
-
-export default patientsReducer;
+export default patientsReducer

@@ -1,12 +1,11 @@
 import React from 'react'
 
-
 var TestApp = React.createClass({
 
     getComponent(e, index) {
         $(e.target).css({
-            'background-color': '#2fe356'
-        });
+            'background-color': '#1e838d'
+        })
     },
     render: function(){
 
@@ -22,8 +21,9 @@ var TestApp = React.createClass({
                 <ul>{options}</ul>
           </div>
     }
-});
-export default TestApp;
+})
+
+export default TestApp
 
 
 

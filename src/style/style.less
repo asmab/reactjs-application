@@ -1,17 +1,29 @@
+@blue-01:#20c6d2;
+@blue-02:  #1e838d;
 
-@backgroud-blue:  #7cd3db;
-@font-color-white: #fff;
-@btn-green-color: #2fe356;
+@white-00: #fff;
+@btn-green-color: #8ec649;
 
 .main-bg{
-  background-color: @backgroud-blue;
+  background-color: @blue-01
 }
 .white-bg {
-  background-color: @font-color-white;
+  background-color: @white-00;
 }
 .text-blue {
-  color: @backgroud-blue;
+  color: @blue-01;
 }
+.btn-primary {
+  background-color: @blue-01;
+}
+
+.btn-submit {
+  color: #fff;
+  background-color: @btn-green-color;
+  border-color: @btn-green-color;
+  border-radius: 0;
+}
+
 .header-logo {
   background-image: url(icon.png);
   background-repeat: no-repeat;
@@ -22,9 +34,9 @@
 }
 
 .prescription-class {
-    background-color: @backgroud-blue;
+    background-color: @blue-01;
     height: 620px;
-    color: @font-color-white;
+    color: @white-00;
 
     h2 {
       text-align: center;
@@ -49,7 +61,7 @@
       ul li {
           width: 290px;
           height: 200px;
-          background-color:@font-color-white;
+          background-color:@white-00;
           float: left;
           margin:10px;
           cursor: pointer;
@@ -77,11 +89,6 @@
 .submit-btn-class {
   float: right;
   margin-right: 30px;
-  .btn-submit {
-    color: #fff;
-    background-color: @btn-green-color;
-    border-color: @btn-green-color;
-    border-radius: 0;
-    width:150px;
-  }
 }
+
+

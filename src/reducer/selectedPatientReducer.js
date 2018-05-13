@@ -1,6 +1,6 @@
-import * as ActionType from '../action/ActionType';
-import initialState from './initialState';
-import _ from 'lodash';
+import * as ActionType from '../action/ActionType'
+import initialState from './initialState'
+import _ from 'lodash'
 
 
 const selectedPatientReducer = (state = initialState.selectedPatientReducer, action) => {
@@ -10,13 +10,11 @@ const selectedPatientReducer = (state = initialState.selectedPatientReducer, act
             return {
                 ...state,
                 patient: _.assign(action.patient)
-            };
+            }
         }
 
-
-        default: { return state; }
+        default: { return state }
     }
-};
+}
 
-
-export default selectedPatientReducer;
+export default selectedPatientReducer

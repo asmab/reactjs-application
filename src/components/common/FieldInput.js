@@ -1,5 +1,4 @@
-import React, {PropTypes} from 'react';
-
+import React, {PropTypes} from 'react'
 
 const FieldInput = ({input, type, name, label, placeholder, meta: {touched, error, warning}}) => {
     return(
@@ -18,10 +17,8 @@ const FieldInput = ({input, type, name, label, placeholder, meta: {touched, erro
                     {touched && ((error && <p className="text-danger">{error}</p>) || (warning && <p className="text-danger">{warning}</p>))}
                 </div>
             </div>
-    );
-};
-
-
+    )
+}
 
 FieldInput.propTypes = {
     input: PropTypes.object.isRequired,
@@ -30,8 +27,6 @@ FieldInput.propTypes = {
     label: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     meta: PropTypes.object.isRequired,
-};
+}
 
-
-
-export default FieldInput;
+export default FieldInput

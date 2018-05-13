@@ -1,81 +1,71 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import toastr from 'toastr';
-import * as patientAction from '../../action/PatientAction';
-import PatientList from './PatientList';
-
-
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import toastr from 'toastr'
+import * as patientAction from '../../action/PatientAction'
+import PatientList from './PatientList'
 
 export class PatientListContainer extends React.Component {
 
     constructor() {
-        super();
+        super()
 
-        this.state = {selectedPatientId: undefined};
+        this.state = {selectedPatientId: undefined}
 
-        this.handleAddPatient = this.handleAddPatient.bind(this);
-        this.handleEditPatient = this.handleEditPatient.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-        this.handleRowSelect = this.handleRowSelect.bind(this);
-        this.handleAddPrescription = this.handleAddPrescription.bind(this);
+        this.handleAddPatient = this.handleAddPatient.bind(this)
+        this.handleEditPatient = this.handleEditPatient.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
+        this.handleRowSelect = this.handleRowSelect.bind(this)
+        this.handleAddPrescription = this.handleAddPrescription.bind(this)
     }
-
 
     componentDidMount() {
         this.props.action.getPatientsAction()
             .catch(error => {
-                toastr.error(error);
-            });
+                toastr.error(error)
+            })
     }
-
-
 
     handleAddPatient() {
-        this.props.history.push('/patient');
+        this.props.history.push('/patient')
     }
 
-
-
     handleEditPatient() {
-        const selectedPatientId = this.state.selectedPatientId;
+        const selectedPatientId = this.state.selectedPatientId
         if (selectedPatientId) {
-            this.setState({selectedPatientId: undefined});            
-            this.props.history.push(`/patient/${selectedPatientId}`);
+            this.setState({selectedPatientId: undefined})          
+            this.props.history.push(`/patient/${selectedPatientId}`)
         }        
     }
 
-
     handleDelete() {
-        const selectedPatientId = this.state.selectedPatientId;
+        const selectedPatientId = this.state.selectedPatientId
 
         if (selectedPatientId) {
-            this.setState({selectedPatientId: undefined});                        
+            this.setState({selectedPatientId: undefined})                      
             this.props.action.deletePatientAction(selectedPatientId)
                 .catch(error => {
-                    toastr.error(error);
-                });
+                    toastr.error(error)
+                })
         }
     }
 
     handleAddPrescription() {
-        const selectedPatientId = this.state.selectedPatientId;
+        const selectedPatientId = this.state.selectedPatientId
         if (selectedPatientId) {
-            this.setState({selectedPatientId: undefined});           
-            this.props.history.push(`/patient-prescription/${selectedPatientId}`);
+            this.setState({selectedPatientId: undefined})          
+            this.props.history.push(`/patient-prescription/${selectedPatientId}`)
         } 
     }
 
     handleRowSelect(row, isSelected) {
         if (isSelected) {
-            this.setState({selectedPatientId: row.id});
+            this.setState({selectedPatientId: row.id})
         }
     }
 
-
-
     render() {
-        const { patients } = this.props;
+        const { patients } = this.props
 
         if (!patients) {
             return (
@@ -87,7 +77,7 @@ export class PatientListContainer extends React.Component {
             <div className="container-fluid">
                 <div className="row mt-3">
                     <div className="col">
-                        <h1>Patients</h1>                        
+                        <h2>List of patients</h2>                        
                     </div>
                 </div>
 
@@ -96,7 +86,7 @@ export class PatientListContainer extends React.Component {
                         <div className="btn-group" role="group">
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-submit"
                                 onClick={this.handleAddPatient}
                             >
                                 <i className="fa fa-plus" aria-hidden="true"/> New
@@ -120,7 +110,7 @@ export class PatientListContainer extends React.Component {
 
                             <button
                                 type="button"
-                                className="btn btn-primary ml-2"
+                                className="btn btn-submit ml-2"
                                 onClick={this.handleAddPrescription}
                             >
                                 <i className="fa fa-plus" aria-hidden="true" onClick={this.handleAddPrescription}/> Add prescription
@@ -135,31 +125,24 @@ export class PatientListContainer extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
 
-
 const mapStateToProps = state => ({
     patients: state.patientsReducer.patients
-});
-
-
+})
 
 const mapDispatchToProps = dispatch => ({
     action: bindActionCreators(patientAction, dispatch)
 
-});
-
-
+})
 
 PatientListContainer.propTypes = {
     patients: PropTypes.array,
     action: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
-};
+}
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PatientListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PatientListContainer)

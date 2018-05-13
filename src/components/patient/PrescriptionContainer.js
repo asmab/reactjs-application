@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 const API_URL = 'https://fest-searcher.herokuapp.com/api/fest/s'
-import Suggestions from './Suggestions'
-import toastr from 'toastr';
+import Medications from './Medications'
+import toastr from 'toastr'
 
 
 class PrescriptionContainer extends React.Component {
@@ -14,7 +14,6 @@ class PrescriptionContainer extends React.Component {
           query: '',
           results: []
         }
-
         this.handleInputChange = this.handleInputChange.bind(this)
     }
 
@@ -34,14 +33,13 @@ class PrescriptionContainer extends React.Component {
     
     handleSubmit() {
 /*
-            this.props.action.savePatientAction(medications)
+            this.props.action.savePrescription(medications)
             .then(() => {
                 toastr.success('Prescription saved');
                 this.props.history.push('/patients');
             }).catch(error => {
                 toastr.error(error);
-            });
-*/
+            }); */
 
     }
 
@@ -58,22 +56,24 @@ class PrescriptionContainer extends React.Component {
     return (
       <div className="prescription-class">
         <h2>PatientSky medications Searcher ...</h2>
+
         <form onSubmit={this.handleSubmit()}>
           <input
             className="search-input"
             placeholder="Search for ATC nr, ATC name, medication name or substance name..."
             ref={input => this.search = input}
-            onChange={this.handleInputChange}
-          />
-          <Suggestions results={this.state.results} />
+            onChange={this.handleInputChange} />
+
+          <Medications results={this.state.results} />
+
           <div className="submit-btn-class">
-            <button type="submit" className="btn btn-submit"> Submit</button>
+            <button type="submit" className="btn btn-submit"> Submit </button>
           </div>
         </form>
+        
       </div>
     )
   }
 }
 
-export default PrescriptionContainer;
-
+export default PrescriptionContainer

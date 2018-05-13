@@ -1,108 +1,90 @@
-import * as ActionType from './ActionType';
-import PatientApi from '../api/PatientApi';
-import { ApiCallBeginAction, ApiCallErrorAction } from './ApiAction';
-
-
+import * as ActionType from './ActionType'
+import PatientApi from '../api/PatientApi'
+import { ApiCallBeginAction, ApiCallErrorAction } from './ApiAction'
 
 export const getPatientsResponse = patients => ({
     type: ActionType.GET_PATIENTS_RESPONSE,
     patients
-});
-
-
+})
 
 export function getPatientsAction() {
     return (dispatch) => {
 
-        dispatch(ApiCallBeginAction());
+        dispatch(ApiCallBeginAction())
 
         return PatientApi.getAllPatients()
             .then(patients => {
-                dispatch(getPatientsResponse(patients));
+                dispatch(getPatientsResponse(patients))
             }).catch(error => {
-                throw error;
-            });
-    };
+                throw error
+            })
+    }
 }
-
-
 
 export const addNewPatientResponse = () => ({
     type: ActionType.ADD_NEW_PATIENT_RESPONSE
-});
-
-
+})
 
 export const updateExistingPatientResponse = () => ({
     type: ActionType.UPDATE_EXISTING_PATIENT_RESPONSE
-});
-
-
+})
 
 export function savePatientAction(PatientBeingAddedOrEdited) {
     return function (dispatch) {
 
-        dispatch(ApiCallBeginAction());
+        dispatch(ApiCallBeginAction())
 
         return PatientApi.savePatient(PatientBeingAddedOrEdited)
             .then(() => {
                 if (PatientBeingAddedOrEdited.id) {
-                    dispatch(updateExistingPatientResponse());
+                    dispatch(updateExistingPatientResponse())
                 } else {
-                    dispatch(addNewPatientResponse());
+                    dispatch(addNewPatientResponse())
                 }
             }).then(() => {
-                dispatch(getPatientsAction());
+                dispatch(getPatientsAction())
             }).catch(error => {
-                dispatch(ApiCallErrorAction());
-                throw (error);
-            });
-    };
+                dispatch(ApiCallErrorAction())
+                throw (error)
+            })
+    }
 }
-
-
 
 export const getPatientResponse = patientFound => ({
     type: ActionType.GET_PATIENT_RESPONSE,
     patient: patientFound
-});
-
-
+})
 
 export function getPatientAction(patientId) {
     return (dispatch) => {
 
-        dispatch(ApiCallBeginAction());
+        dispatch(ApiCallBeginAction())
 
         return PatientApi.getPatient(patientId)
             .then(patient => {
-                dispatch(getPatientResponse(patient));
+                dispatch(getPatientResponse(patient))
             }).catch(error => {
                 throw error;
-            });
-    };
+            })
+    }
 }
-
-
 
 export const deletePatientResponse = () => ({
     type: ActionType.DELETE_PATIENT_RESPONSE
-});
-
-
+})
 
 export function deletePatientAction(patientId) {
     return (dispatch) => {
 
-        dispatch(ApiCallBeginAction());
+        dispatch(ApiCallBeginAction())
 
         return PatientApi.deletePatient(patientId)
             .then(() => {
-                dispatch(deletePatientResponse());
+                dispatch(deletePatientResponse())
             }).then(() => {
-                dispatch(getPatientsAction());
+                dispatch(getPatientsAction())
             }).catch(error => {
-                throw error;
-            });
-    };
+                throw error
+            })
+    }
 }
