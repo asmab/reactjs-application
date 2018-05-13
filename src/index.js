@@ -7,6 +7,7 @@ import configureStore from './configureStore';
 import {Provider} from 'react-redux';
 import App from './components/App';
 import './style/style.css';
+import './style/style.less';
 import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'toastr/build/toastr.min.css';

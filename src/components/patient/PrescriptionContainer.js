@@ -42,14 +42,18 @@ class PrescriptionContainer extends React.Component {
 
   render() {
     return (
-      <form>
-        <input
-          placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-        />
-        <Suggestions results={this.state.results} />
-      </form>
+      <div className="testLess">
+        <h2>PatientSky medicines Searcher ...</h2>
+        <form>
+          <input
+            className="search-input"
+            placeholder="Search for ATC nr, ATC name, medication name or substance name..."
+            ref={input => this.search = input}
+            onChange={this.handleInputChange}
+          />
+          <Suggestions results={this.state.results} />
+        </form>
+      </div>
     )
   }
 }

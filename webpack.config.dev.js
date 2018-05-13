@@ -2,6 +2,11 @@ import path, {resolve} from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// Instances 
+const extractCSS = new ExtractTextPlugin('vendor.css')
+const extractSCSS = new ExtractTextPlugin('styles_1.css')
+const extractLESS = new ExtractTextPlugin('styles_2.css')
 
 
 export default {
@@ -39,17 +44,32 @@ export default {
         
         new webpack.LoaderOptionsPlugin({ debug: true }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+
+        new ExtractTextPlugin({ })
     ],
 
     module: {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, include: path.join(__dirname, 'src'), use: 'babel-loader' },
-            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: 'file-loader' },
             { test: /\.(woff|woff2)$/, use: 'url-loader?prefix=font/&limit=5000' },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=application/octet-stream' },
-            { test: /\.(png|jpg|svg)$/, use: 'file-loader' }
+            { test: /\.(png|jpg|svg)$/, use: 'file-loader' },
+            {
+                test: /\.css$/,
+                use: extractCSS.extract({
+                    fallback: 'style-loader',
+                    use: [ 'css-loader']
+                })
+            },
+            {
+                test: /\.less$/,
+                use: extractLESS.extract({
+                    fallback: 'style-loader',
+                    use: [ 'css-loader', 'less-loader' ]
+                })
+            }
         ]
     }
 };

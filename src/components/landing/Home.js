@@ -9,11 +9,8 @@ const Home = () => {
         <div>
             
             <Header/>
-
-            <div className="container text-muted">
-                <Section/>
-                <Footer/>
-            </div>
+            <Section/>
+            <Footer/>
             
         </div>
     );

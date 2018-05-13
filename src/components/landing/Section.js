@@ -2,9 +2,10 @@ import React from 'react';
 const Section = () => {
     return (
 
-        <section className="row">
+        <section className="jumbotron jumbotron-fluid white-bg">
 
-            <h1> This is a section in home page</h1>
+            <h2> Frontend candidate assignment</h2>
+            <p> Author : Asma Boussabat </p>
 
         </section>
     );
