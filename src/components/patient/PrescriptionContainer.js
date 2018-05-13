@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 const API_URL = 'https://fest-searcher.herokuapp.com/api/fest/s'
 import Suggestions from './Suggestions'
+import toastr from 'toastr';
 
 
 class PrescriptionContainer extends React.Component {
@@ -30,8 +31,21 @@ class PrescriptionContainer extends React.Component {
 
         })
     }
+    
+    handleSubmit() {
+/*
+            this.props.action.savePatientAction(medications)
+            .then(() => {
+                toastr.success('Prescription saved');
+                this.props.history.push('/patients');
+            }).catch(error => {
+                toastr.error(error);
+            });
+*/
 
-   getInfo () {
+    }
+
+  getInfo () {
     axios.get(`${API_URL}/${this.state.query}`)
       .then(({ data }) => {
         this.setState({
@@ -42,9 +56,9 @@ class PrescriptionContainer extends React.Component {
 
   render() {
     return (
-      <div className="testLess">
-        <h2>PatientSky medicines Searcher ...</h2>
-        <form>
+      <div className="prescription-class">
+        <h2>PatientSky medications Searcher ...</h2>
+        <form onSubmit={this.handleSubmit()}>
           <input
             className="search-input"
             placeholder="Search for ATC nr, ATC name, medication name or substance name..."
@@ -52,6 +66,9 @@ class PrescriptionContainer extends React.Component {
             onChange={this.handleInputChange}
           />
           <Suggestions results={this.state.results} />
+          <div className="submit-btn-class">
+            <button type="submit" className="btn btn-submit"> Submit</button>
+          </div>
         </form>
       </div>
     )

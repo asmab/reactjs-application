@@ -1,11 +1,17 @@
 
 @backgroud-blue:  #7cd3db;
-@font-color: #fff;
+@font-color-white: #fff;
+@btn-green-color: #2fe356;
 
 .main-bg{
   background-color: @backgroud-blue;
 }
-
+.white-bg {
+  background-color: @font-color-white;
+}
+.text-blue {
+  color: @backgroud-blue;
+}
 .header-logo {
   background-image: url(icon.png);
   background-repeat: no-repeat;
@@ -14,22 +20,46 @@
   height: 42px;
   width: 99px;
 }
-.text-blue {
-  color: @backgroud-blue;
+
+.prescription-class {
+    background-color: @backgroud-blue;
+    height: 620px;
+    color: @font-color-white;
+
+    h2 {
+      text-align: center;
+      font-size: 45px;
+      font-weight: 300;
+    }
+
+    .search-list {
+      height: 100%;
+      max-height: 400px;
+      overflow-y: scroll;
+      margin:20px;
+      color: black;
+      ul {
+        list-style-type: none;
+      }
+      ul {
+          padding: 0; 
+          margin: 0;
+          list-style-type: none;
+      }
+      ul li {
+          width: 290px;
+          height: 200px;
+          background-color:@font-color-white;
+          float: left;
+          margin:10px;
+          cursor: pointer;
+          p {
+            margin:10px;
+          }
+      }
+    }
 }
 
-.white-bg {
-  background-color: white;
-}
-.testLess {
-    background-color: @backgroud-blue;
-}
-.testLess h2 {
-    color: @font-color;
-    text-align: center;
-    font-size: 45px;
-    font-weight: 300;
-}
 
 .search-input {
     border-radius: 2px;
@@ -42,4 +72,16 @@
     margin-left: 30px;
     height: 73px;
     text-align: center;
+}
+
+.submit-btn-class {
+  float: right;
+  margin-right: 30px;
+  .btn-submit {
+    color: #fff;
+    background-color: @btn-green-color;
+    border-color: @btn-green-color;
+    border-radius: 0;
+    width:150px;
+  }
 }

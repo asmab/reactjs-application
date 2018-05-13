@@ -24,7 +24,7 @@ const getCaret = direction => {
 
 
 const titleFormatter = (cell, row) => {
-  return `<a href=${row.watchHref} target="_blank">${cell}</a>`;
+  return `${cell}`;
 };
 
 function something (cell, row) {
@@ -53,9 +53,7 @@ class PatientList extends React.Component {
             hideSelectColumn: true            
         };
 
-
         this.state = {selectedPatientId: undefined};
-
         this.handleAddPatient = props.handleAddPatient.bind(this);
     }
 
