@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-const API_URL = 'https://fest-searcher.herokuapp.com/api/fest/s'
 import Medications from './Medications'
 import toastr from 'toastr'
+
+// test PatientSky​ API
+const API_URL = 'https://fest-searcher.herokuapp.com/api/fest/s'
 
 
 class PrescriptionContainer extends React.Component {
 
     constructor() {
-        super();
+        super()
 
         this.state = {
           query: '',
