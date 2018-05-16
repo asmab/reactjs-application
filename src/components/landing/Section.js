@@ -4,8 +4,14 @@ const Section = () => {
     return (
 
         <section className="jumbotron jumbotron-fluid white-bg">
-            <h2> Frontend candidate assignment</h2>
-            <p> Author : Asma Boussabat </p>
+            <p> test tradeshift ui components </p>
+
+            <aside data-ts="Aside">
+                <div data-ts="Panel">
+                    <p>Aside content.</p>
+                </div>
+            </aside>
+            
         </section>
     )
 }
